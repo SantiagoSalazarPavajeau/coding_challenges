@@ -1,5 +1,3 @@
-
-
 public class Exercise{
 
     static void countingValleys(int steps, String path){
