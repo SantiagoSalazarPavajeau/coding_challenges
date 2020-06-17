@@ -1,4 +1,6 @@
-public class Exercise{
+package counting_valleys;
+
+public class Exercise {
 
     static void countingValleys(int steps, String path){
         char[] hike = path.toCharArray();

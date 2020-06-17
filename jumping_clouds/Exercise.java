@@ -1,4 +1,6 @@
-public class Exercise{
+package jumping_clouds;
+
+public class Exercise {
 
     public static void main(String[] args){
         int[] clouds = new int[] {0, 0, 0, 1, 0, 0};
