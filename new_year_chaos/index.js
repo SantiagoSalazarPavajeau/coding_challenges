@@ -1,16 +1,18 @@
 // compare original array and final array
 // to find more than 2 moves(bribes)
 
+//we compare two arrays by using an inner loop
+
 const newYearChaos = (queueArray) => {
     let movesBribes = 0
     let tooChaotic = false
-    for(let i = 0; i< queueArray.length; i++ ){
-        if (queueArray[i] - (i+1) > 2){
+    for(let initialIndex = 0; initialIndex< queueArray.length; initialIndex++ ){
+        if (queueArray[initialIndex] - (initialIndex+1) > 2){
             tooChaotic = true
             break
         }
-        for(let j = 0; j < i;j++){
-            if (queueArray[j] > queueArray[i]){
+        for(let movedIndex = 0; movedIndex < initialIndex;movedIndex++){
+            if (queueArray[movedIndex] > queueArray[initialIndex]){
                 movesBribes++
             }
         }
