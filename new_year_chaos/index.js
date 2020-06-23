@@ -11,7 +11,7 @@ const newYearChaos = (queueArray) => {
             tooChaotic = true
             break
         }
-        for(let movedIndex = 0; movedIndex < initialIndex;movedIndex++){
+        for(let movedIndex = queueArray[initialIndex] - 2; movedIndex < initialIndex;movedIndex++){
             if (queueArray[movedIndex] > queueArray[initialIndex]){
                 movesBribes++
             }
