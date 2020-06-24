@@ -2,21 +2,27 @@
 // 
 
 const swapTwoToSort = (unsortedArray)=>{
-    let swaps = 0
+    let swaps = 0 // this variable is not reset on loop so it stores the last number its assigned in loop
     let inspectionArray = []
     for (let outerIndex = 0; outerIndex < unsortedArray.length; outerIndex++) {
-        console.log("Unsorted Index is: "+outerIndex)
-        let innerIndex = outerIndex, cycle = 0;
-        console.log("Index to value is: " + innerIndex)
-        while (!inspectionArray[innerIndex]) {
-            console.log("\tWe are inside while loop... ")
-            inspectionArray[innerIndex] = true; // create the current element on the virtual array
-            console.log(`\tWe just inspected the: [${innerIndex}] element`)
-            console.log(`\tThe current element is: ${unsortedArray[innerIndex]}`)
-            innerIndex = unsortedArray[innerIndex] - 1; // change the j or inner index to be the the j element on the original array
-            console.log(`\tWe just set the index to value to:  ${unsortedArray[innerIndex] - 1}`)
-            cycle++;
-            console.log(`\tWe just counted ${cycle} cycles.`)
+        console.log("Current Unsorted-Array index is: "+outerIndex)
+        let innerIndex = outerIndex
+        let cycle = 0; // this is a local variable for the block it is set to 0 on each loop over the unsorted array
+        console.log("The correct element should be:" + innerIndex)
+        if(!inspectionArray[innerIndex]) {
+            while (!inspectionArray[innerIndex]) {
+                console.log(`\tWe are inside while loop... The [${innerIndex}] index has not been inspected.`)
+                inspectionArray[innerIndex] = true; // create the current element on the virtual array
+                console.log(`\tWe just inspected the: [${innerIndex}] index`)
+                console.log(`\tThe current element is: ${unsortedArray[innerIndex]}`)
+                console.log(`\t${unsortedArray}`)
+                innerIndex = unsortedArray[innerIndex] - 1; // change the j or inner index to be the the j element on the original array
+                console.log(`\tWe just set the index to value to:  ${unsortedArray[innerIndex] - 1}`)
+                cycle++;
+                console.log(`\tWe just counted ${cycle} cycles.`)
+            }
+        } else{
+            console.log(`Index ${innerIndex} has already been inspected`)
         }
         if (cycle != 0)
             swaps += cycle - 1;
