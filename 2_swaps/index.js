@@ -11,7 +11,7 @@ const swapTwoToSort = (unsortedArray)=>{
         while (!virtualSortedArray[innerIndex]) {
             console.log("We are inside while loop ")
             virtualSortedArray[innerIndex] = true; // create the current element on the virtual array
-            console.log(`Just visited innerindex: ${innerIndex} ${virtualSortedArray[innerIndex]}`)
+            console.log(`Just set the: ${innerIndex} element to ${virtualSortedArray[innerIndex]}`)
             innerIndex = unsortedArray[innerIndex] - 1; // change the j or inner index to be the the j element on the original array
             console.log("j \t ->" + innerIndex)
             console.log(virtualSortedArray)
