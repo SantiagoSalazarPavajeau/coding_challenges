@@ -16,7 +16,7 @@ const swapTwoToSort = (unsortedArray)=>{
                 console.log(`\tWe just inspected the: [${innerIndex}] index`)
                 console.log(`\tThe current element is: ${unsortedArray[innerIndex]}`)
                 console.log(`\t${unsortedArray}`)
-                innerIndex = unsortedArray[innerIndex] - 1; // change the j or inner index to be the the j element on the original array
+                innerIndex = unsortedArray[innerIndex] - 1; // change the inner Index to stay or leave the while loop
                 console.log(`\tWe just set the index to value to:  ${unsortedArray[innerIndex] - 1}`)
                 cycle++;
                 console.log(`\tWe just counted ${cycle} cycles.`)
