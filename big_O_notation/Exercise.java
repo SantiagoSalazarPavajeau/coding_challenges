@@ -1,4 +1,6 @@
-public class Exercise{
+package big_O_notation;
+
+public class Exercise {
 
     // O(1)
     static void printFirstItem(int[] items) {
@@ -23,7 +25,6 @@ public class Exercise{
 
 
     public static void main(String[] args){
-        printFirstItem(items);
     }
 
 
