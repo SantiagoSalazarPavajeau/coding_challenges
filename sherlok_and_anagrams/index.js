@@ -67,21 +67,20 @@ function countAnagrams(currentIndex, substrings) {
   }
 
   function isAnagram(str1, str2) {
-    console.log(`IS ANAGRAM?`)
     const hist = {}
     
     for (let i = 0; i < str1.length; i++) {
       const char = str1[i]
-      console.log(`${char}`)
+      // console.log(`${char}`)
       if (hist[char]) {
         hist[char]++
-        console.log(`${hist[char]}`)
+        console.log(`Counting ${hist[char]} '${char}'`)
       } else {
         hist[char] = 1
-        console.log(`${hist[char]}`)
+        console.log(`There is ${hist[char]}`)
       }
     }
-  
+    console.log(`\t ${hist} checked the current element`)
     for (let j = 0; j < str2.length; j++) {
       const char = str2[j]
       console.log(`${char}`)
@@ -92,7 +91,8 @@ function countAnagrams(currentIndex, substrings) {
         return false
       }
     }
-  
+    console.log(`\t ${hist} checked with the other element`)
+    console.log(`\t ${str1} and ${str2} are anagrams.`)
     return true
   }
   
