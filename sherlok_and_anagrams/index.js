@@ -1,4 +1,4 @@
-sherlockAndAnagrams("papa")
+sherlockAndAnagrams("pap")
 
 function sherlockAndAnagrams(string) {
     console.log(`Checking for duplicate characters in the string "${string}": ...`)
@@ -16,12 +16,12 @@ function sherlockAndAnagrams(string) {
     console.log('Lets create some Substrings: ...')
     const arr = createSubstrings(string)
     
-    console.log('Lets count the anagrams: ...')
+    console.log('Lets find the anagrams by comparing substrings: ...')
     for (let i = 0; i < arr.length; i++) {
       anagramsCount += countAnagrams(i, arr)
+      console.log(`Total anagrams:`)
+      console.log(anagramsCount)
     }
-
-    console.log(anagramsCount)
     return anagramsCount
 }
 
@@ -44,22 +44,24 @@ function createSubstrings(string){
 function countAnagrams(currentIndex, substrings) {
     // iterating over the substrings array
     const currentElement = substrings[currentIndex]
-    console.log(`Now the current element is: ${currentElement}`)
+    console.log(`countAnagrams: Now the current element (substring) is: ${currentElement}`)
 
     // slicing all the elements after the current element
     const restOfElements = substrings.slice(currentIndex + 1)
-    console.log(`The elements for comparison are: ${restOfElements}`)
+    console.log(`countAnagrams: The elements(substrings) for comparison are: ${restOfElements}`)
 
     let counter = 0
     // An O[n^2] complexity loop
     // comparing the current element to the rest of the elements
     for (let i = 0; i < restOfElements.length; i++) {
-      console.log(`Checking if the strings '${currentElement}' and '${restOfElements[i]}' are anagrams`)
+      console.log(`countAnagrams: Checking if the strings '${currentElement}' and '${restOfElements[i]}' are anagrams`)
 
-      if (currentElement.length === restOfElements[i].length && isAnagram(currentElement, restOfElements[i])) {
-        console.log(`\t ${currentElement} is an anagram of ${restOfElements[i]}`)
+      if (isAnagram(currentElement, restOfElements[i]) && currentElement.length === restOfElements[i].length) {
+        console.log(`\tcountAnagrams: ${currentElement} is an anagram of ${restOfElements[i]}`)
         counter++
-        console.log(`\tFor a total of ${counter} anagrams.`)
+        console.log(`\tcountAnagrams: We found ${counter} more anagram.`)
+      } else{
+        console.log(`countAnagrams: Not an anagram, not same length or matching letters`)
       }
     }
   
@@ -68,31 +70,32 @@ function countAnagrams(currentIndex, substrings) {
 
   function isAnagram(str1, str2) {
     const hist = {}
-    
+    console.log(`\tisAnagram: Checking characters in the string '${str1}'`)
     for (let i = 0; i < str1.length; i++) {
       const char = str1[i]
-      // console.log(`${char}`)
+      console.log(`\tisAnagram: Checking character: ${char}`)
       if (hist[char]) {
         hist[char]++
-        console.log(`Counting ${hist[char]} '${char}'`)
+        console.log(`\tisAnagram: Found another '${char}' in ${str1}`)
       } else {
         hist[char] = 1
-        console.log(`There is ${hist[char]}`)
+        console.log(`\tisAnagram: Found '${char}' in ${str1}`)
       }
     }
-    console.log(`\t ${hist} checked the current element`)
+    console.log(`\tisAnagram: Checking if the characters in the string ${str2} are in the string ${str1}`)
+
     for (let j = 0; j < str2.length; j++) {
       const char = str2[j]
-      console.log(`${char}`)
+      console.log(`\tisAnagram: Checking character: ${char}`)
       if (hist[char]) {
         hist[char]--
-        console.log(`${hist[char]}`)
+        console.log(`\tisAnagram: Found '${char}' in '${str2}'`)
       } else {
+        console.log(`\tisAnagram: '${char}' not found in '${str1}'`)
         return false
       }
     }
-    console.log(`\t ${hist} checked with the other element`)
-    console.log(`\t ${str1} and ${str2} are anagrams.`)
+    console.log(`\t isAnagram: '${str1}' and '${str2}' are anagrams.`)
     return true
   }
   
