@@ -7,11 +7,14 @@
 function runningSum(array){
     let sumArray = []
     for(let i = 0; i<array.length; i++){
-        if(sumArray[0]){
-            sumArray.push(array[i]+ sumArray[i-1])
-        }else{
+        if(sumArray[0]){ // if sumArray first value is falsy: skip
+            sumArray.push(array[i] + sumArray[i-1])
+        }else if(sumArray[0] === 0){ // if sumArray first value is zero
+            sumArray.push(array[i] + sumArray[i-1]) //push the addition of the current value in array and the last value in the sumArray
+        } else{
             sumArray[0] = array[i]
         }
+
     }
     return sumArray
 }
