@@ -5,7 +5,7 @@ const swapTwoToSort = (unsortedArray)=>{
     let swaps = 0 // this variable is not reset on loop so it stores the last number its assigned in loop
     let inspectionArray = []
     for (let outerIndex = 0; outerIndex < unsortedArray.length; outerIndex++) {
-        console.log("Current Unsorted-Array index is: "+outerIndex)
+        console.log("Current unsorted-array Index is: "+outerIndex)
         let innerIndex = outerIndex
         let cycle = 0; // this is a local variable for the block it is set to 0 on each loop over the unsorted array
         console.log("The correct element should be:" + innerIndex)
