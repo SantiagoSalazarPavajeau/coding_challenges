@@ -1,6 +1,9 @@
 import java.lang.reflect.Array;
 import java.util.Arrays;
 
+// find the sum of the 'hourglasses' in the array
+// find the highest number
+
 public class Exercise{
 
     static void nestedArrayHourglass(int[][] array){
