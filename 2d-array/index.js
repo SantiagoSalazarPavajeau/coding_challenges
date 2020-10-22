@@ -14,20 +14,19 @@ twoDimensionalArrayHourglass(twodarray)
 
 function twoDimensionalArrayHourglass(array){
     let hourGlassSums = []
-    for(let row = 0; row <= 3; row++){
-        for(let column = 0; column <= 3; column++){
-            let hourGlassSum = 0
+    for(let row = 0; row <= 3; row++){ // iterate on sets of three horizontally until index is equal to 3 due to the size of example
+        for(let column = 0; column <= 3; column++){ // iterate on sets of three vertically until index is equal to 3 due to the size of example
+            let hourGlassSum = 0;
             hourGlassSum += array[row][column];
             hourGlassSum += array[row][column + 1];
             hourGlassSum += array[row][column + 2];
             hourGlassSum += array[row + 1][column + 1];
-            hourGlassSum += array[row + 2][column]; 
+            hourGlassSum += array[row + 2][column];
             hourGlassSum += array[row + 2][column + 1];
             hourGlassSum += array[row + 2][column + 2];
             hourGlassSums.push(hourGlassSum)
         }
     }
-    console.log(Math.max(...hourGlassSums))
+    console.log(Math.max(...hourGlassSums)) // Math.max finds the max value takes in numbers as arguments
     console.log(hourGlassSums)
-
 }
