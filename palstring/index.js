@@ -1,38 +1,27 @@
 //thequickbrownfoxxofnworbquickthe  ->  brownfoxxofnworb, The length is: 16
 
-const expandedString = (string) => {
-    let stringArray = []
-    for(let i = 0;  i < string.length; i++){
-        stringArray.push(string[i])
-        stringArray.push("")
-    }
-    stringArray.pop()
-    return stringArray
-}
 
 const maxPalindromeSubString = (string) => {
     let initialChecks = string.split('')
     
     if (new String(string) == new String(initialChecks.reverse().join(''))){
-        // console.log(initialChecks.reverse())
-        console.log("the whole string is a palindrome")
-        console.log(string)
+        // the whole string is a palindrome
         return string
     }
 
     if(initialChecks.every( (currentValue) => currentValue === initialChecks[0] )){ // exit if all charactes are equal
-        console.log("the whole chars are the same")
+        //All the chars are the same
         return string
     }
 
-    if(string.length <= 1){ // exit if string in 1 or less elements
-        console.log(string[0])
+    if(string.length <= 1){ 
+        // exit if string in 1 or less elements
         return string[0]
     }
     let result = [];
 
-    const arrSp = string.split('').join(' ').split("")
-    console.log(arrSp)
+    const arrSp = string.split('').join(' ').split("") // add spaces between chars
+
     for(let i = 0;  i < arrSp.length; i++){
             let palindrome = [];
             let center;
@@ -44,20 +33,9 @@ const maxPalindromeSubString = (string) => {
                     // keep expanding if longer palindrome found 
                     //but only push if elements are not falsy
                     // j is skipping index 2 in this conditional because they are not equal
-                    if(center === 'd'){
-                        console.log(center)
-                        console.log(arrSp[i-j])
-                        console.log(arrSp[i+j])
-                        console.log(`i:${i}`)
-                        console.log(`j:${j}`)
-                    }   
                     arrSp[i-j].trim() ? palindrome.unshift(arrSp[i-j]) : null
                     arrSp[i+j].trim() ? palindrome.push(arrSp[i+j]) : null 
-                    // if(center === 'd'){
-                    //     console.log(center)
-                    //     console.log(`i:${i}`)
-                    //     console.log(`j:${j}`)
-                    // }                
+          
                 }else{
                     break;
                 }
@@ -72,19 +50,11 @@ const maxPalindromeSubString = (string) => {
             palindrome.length ? result.push(palindrome) : null
             
     }
-    // console.log(result)
 
-    cleanedResult = result
-    // result = result.filter((pal) => pal.length !== 0) // only return the arrays that are not empty
-    // let cleanedResult = [];
-    // for(let pal of result){ // clean up empty strings and undefined values
-    //     cleanedResult.push(pal.filter((char) => char !== ' '))
-    // }
-    // console.log(cleanedResult)
+    let cleanedResult = result
 
     
     if(cleanedResult.length < 1){
-        console.log(string[0])
         return string[0];
     } else{
         let correctIndex = 0;
@@ -95,7 +65,7 @@ const maxPalindromeSubString = (string) => {
 
 }
 
-maxPalindromeSubString("aacabdkacaa")
+maxPalindromeSubString("thequickbrownfoxxofnworbquickthe")
 
 // *Program to print unique elements of an string present on odd position, along with the count of those elements in the entire string
 // i.e abbloseckk - a:1,b:2,o:1,e:1,k:2
