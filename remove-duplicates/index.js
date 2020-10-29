@@ -1,6 +1,5 @@
 const duplicates = [1,1,2]
 
-
 const removeDuplicates = (array) => {
     let i = 0
         for(let j = 1; j < array.length; j++){
@@ -12,7 +11,5 @@ const removeDuplicates = (array) => {
     console.log(i + 1)
     return i + 1 // return the count of non duplicates + 1 since it starts at 0
 }
-
-
 
 removeDuplicates(duplicates)
