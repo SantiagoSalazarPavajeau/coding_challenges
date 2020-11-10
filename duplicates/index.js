@@ -25,3 +25,33 @@ const findDuplicates = (numbers) => { // O(2n) big o complexity
 findDuplicates(numbersWDuplicates)
 
 
+// with O(n^2) complexity we do a nested loop 
+
+
+const findDuplicatesSlow = (numbers) => { // O(2n) big o complexity
+
+    let result = {}
+
+    for(let i = 0; i<numbers.length;  i++){ 
+        for(let j = 0; j<numbers.length;  j++){
+
+            if(numbers[i] === numbers[j]){
+                if(!result[numbers[i]]){
+                    result[numbers[i]] = [numbers[i]] // add first found number to array when key and array are created
+                }else{
+                    result[numbers[i]].push(numbers[i]) // key changes to assign values to keys that already exist
+                }
+                numbers[i] = null // delete value at i position from numbers so it is not considered again by j nested index iteration
+            }
+
+        }
+
+    }
+
+    
+    console.log(result)
+    return result
+}
+
+
+findDuplicatesSlow(numbersWDuplicates)
