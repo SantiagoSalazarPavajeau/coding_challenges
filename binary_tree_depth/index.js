@@ -6,29 +6,24 @@
 //          /  \
 //         15   7
 
-// at the top .val is 3 
-// .right is 20
-// .left is 9
+// at the top root.val is 3 
+// root.right is 20
+// root.left is 9
 
 // binary trees are searched by recursion(the function calling itself)
 
-const treeDepth = (root) => {
-    if(root === null) return 0 //
-    return Math.max(treeDepth(root.right), treeDepth(root.left))
-}
+// const treeDepth = (root) => {
+//     if(root === null) return 0 //
+//     return Math.max(treeDepth(root.right), treeDepth(root.left))
+// }
 
-const getMaxDepth = (root, sum) => {
-    if(!root){ //if we reached an empty leaf return the count so far
-        return sum
+const getMaxDepth = (root) => {
+    if(root === null){ //if we reached an empty leaf return the count so far
+        return 0
     }
      // looping by recursion 
      // with two properties right and left
-
-    if( getMaxDepth(root.left, sum++) < getMaxDepth(root.right, sum++)){
-        return getMaxDepth(root.right,)
-    }else{
-        return getMaxDepth(root.left, sum++)
-    }
+    return Math.max( maxDepth(root.left) +1 , maxDepth(root.right) +1 )
 }
 
 //     1
