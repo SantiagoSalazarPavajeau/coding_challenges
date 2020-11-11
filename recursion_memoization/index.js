@@ -25,3 +25,20 @@ const recursion = (currentLevel, maxLevel, treeData) => {
 }
 
 recursionTreeMemoization(3)
+
+const recursionTreeSlow = (maxLevel) => {
+    return recursion_Tree_Slow(0, maxLevel)
+}
+
+const recursion_Tree_Slow = (currentLevel, maxLevel) => {
+    if(currentLevel > maxLevel){
+        return 0
+    }
+    if(currentLevel === maxLevel){
+        return 1
+    }
+    console.log(recursion_Tree_Slow(currentLevel+1, maxLevel) + recursion_Tree_Slow(currentLevel+2, maxLevel))
+    return recursion_Tree_Slow(currentLevel+1, maxLevel) + recursion_Tree_Slow(currentLevel+2, maxLevel)
+}
+
+recursionTreeSlow(3)
