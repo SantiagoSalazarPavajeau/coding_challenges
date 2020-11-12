@@ -1,3 +1,7 @@
+// randomize an array but with class based methods 
+
+// can be through .prototype functions or class JS
+
 class Solution{
 
     constructor(nums){
