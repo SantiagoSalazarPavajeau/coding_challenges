@@ -4,7 +4,7 @@
 const numbersWDuplicates = [1,1,1,3,3,3,5,5,6,9,4,2,5,7,4,3,2,1,8,5,3,6,7,2,5,7,1,8,1]
 
 
-const findDuplicates = (numbers) => { // O(2n) big o complexity
+const findDuplicates = (numbers) => { // O(n^2) big o complexity
 
     let result = {}
 
@@ -31,7 +31,6 @@ findDuplicates(numbersWDuplicates)
 const findDuplicatesSlow = (numbers) => { // O(2n) big o complexity
 
     let result = {}
-
     for(let i = 0; i<numbers.length;  i++){ 
         for(let j = 0; j<numbers.length;  j++){
 
@@ -41,7 +40,7 @@ const findDuplicatesSlow = (numbers) => { // O(2n) big o complexity
                 }else{
                     result[numbers[i]].push(numbers[i]) // key changes to assign values to keys that already exist
                 }
-                numbers[i] = null // delete value at i position from numbers so it is not considered again by j nested index iteration
+                break //numbers[i] = null // delete value at i position from numbers so it is not considered again by j nested index iteration
             }
 
         }
@@ -55,3 +54,61 @@ const findDuplicatesSlow = (numbers) => { // O(2n) big o complexity
 
 
 findDuplicatesSlow(numbersWDuplicates)
+
+
+const countDuplicates = (numbers) => { // O(n) big o complexity
+
+    let result = {}
+
+    for(let i = 0; i<numbers.length;  i++){
+
+        if(!result[numbers[i]]){ // if key does not exist (value has not been accounted for)
+
+            let count = 1;
+
+            result[numbers[i]] = numbers[i] //initialize key
+
+            result[numbers[i]] = count // initialize value
+
+        } else {
+
+            result[numbers[i]]++ //increase count if key already exists
+            
+        }
+    }
+    return result
+}
+
+countDuplicates(numbersWDuplicates)
+
+
+const countDuplicatesSlow = (numbers) => { // O(n^2) big o complexity
+
+    let result = {}
+
+    for(let i = 0; i<numbers.length;  i++){ 
+
+        let count = 1
+
+        for(let j = 0; j<numbers.length;  j++){
+
+            if(numbers[i] === numbers[j]){
+
+                if(!result[numbers[i]]){ // if its the first time we find 
+
+                    result[numbers[i]] = numbers[i] // create key 
+
+                    result[numbers[i]] = count // add first count of number we just found
+
+                }else{
+
+                    result[numbers[i]] = count++ // key changes to count duplicates corresponding to that key
+
+                }
+            }
+        }
+    }
+    return result
+}
+
+countDuplicatesSlow(numbersWDuplicates)
