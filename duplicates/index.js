@@ -84,31 +84,19 @@ countDuplicates(numbersWDuplicates)
 
 const countDuplicatesSlow = (numbers) => { // O(n^2) big o complexity
 
-    let result = {}
+    let result = []
 
     for(let i = 0; i<numbers.length;  i++){ 
-
-        let count = 1
-
+        let count = 0
         for(let j = 0; j<numbers.length;  j++){
-
             if(numbers[i] === numbers[j]){
-
-                if(!result[numbers[i]]){ // if its the first time we find 
-
-                    result[numbers[i]] = numbers[i] // create key 
-
-                    result[numbers[i]] = count // add first count of number we just found
-
-                }else{
-
-                    result[numbers[i]] = count++ // key changes to count duplicates corresponding to that key
-
-                }
+                count++
             }
         }
+        result.push(`Found a total of: (${count}) number ${numbers[i]}s`)
     }
-    return result
+    
+    console.log([...new Set(result)]) // print only unique for readability
 }
 
 countDuplicatesSlow(numbersWDuplicates)
