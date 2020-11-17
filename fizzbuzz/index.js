@@ -14,15 +14,16 @@
      }
 
      for(let listNumber = 1; listNumber <= size; listNumber++){
-
+        let found = false
          for( let key in conditionData){
              console.log(key)
              if ((listNumber % key) === 0){
+                found = true
                  result.push(conditionData[key])
-             }
+             } 
          }
 
-         if(!result[listNumber]){
+         if(!found){
             result.push(listNumber)
          }
      }
@@ -30,4 +31,4 @@
      return result
  }
 
- fizzBuzz(10)
+ fizzBuzz(15)
