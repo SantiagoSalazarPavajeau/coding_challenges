@@ -8,23 +8,23 @@
 
      const result = []
 
-     const conditionData = {
+     const conditionData = { // object helps to store conditions however it is not exactly a cache that stores different values during execution
          3: "Fizz",
          5: "Buzz"
      }
 
      for(let listNumber = 1; listNumber <= size; listNumber++){
-        let found = false
+        let found = false // to skip index that already was set  to string
          for( let key in conditionData){
              console.log(key)
-             if ((listNumber % key) === 0){
+             if ((listNumber % key) === 0){ // check for condition (divisible by) to add fizz or buzz to the result list
                 found = true
                  result.push(conditionData[key])
              } 
          }
 
          if(!found){
-            result.push(listNumber)
+            result.push(listNumber) // add number when digit was not divisible with 0 remainder
          }
      }
      console.log(result)
