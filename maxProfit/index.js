@@ -44,3 +44,41 @@ const multiMaxProfits = (prices) => {
 }
 
 multiMaxProfits([7,1,5,3,6,4])
+
+
+// super slow O(n^n)
+
+
+const slowMaxProfit = (prices) => {
+    return slowestLoopAndRecursion(prices, 0)
+}
+
+const slowestLoopAndRecursion = (prices, currentDay) => {
+    if(currentDay >= prices.length)
+        return 0
+    
+    let allDaysMax = 0
+    for( let i = currentDay; i < prices.length; i++){ // use i to keep track of current day's price
+
+        let profitByTransaction = 0 
+
+        for(let j = i + 1; j < prices.length; j++){ // use j to expand to next days
+
+            if(prices[i] < prices[j]){ // if the next days price is higher than the present day
+
+                const result = slowestLoopAndRecursion(prices, j+1) + prices[j] - prices[i] // try with each increasingly consecutive day (j+1) in recursion until next days price is lower
+
+                if (result > profitByTransaction){ // compare and set daily profit to result if the result is larger than 0
+                    profitByTransaction = result
+                }
+            }
+        }
+        if(profitByTransaction > allDaysMax){ // compare and set to highest when current day's price is higher than next day's price
+            allDaysMax = profitByTransaction
+        }
+    }
+    console.log(allDaysMax)
+    return allDaysMax
+}
+
+slowMaxProfit([7,1,5,3,6,4])
