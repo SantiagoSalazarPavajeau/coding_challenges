@@ -10,21 +10,51 @@
 //     }
 
 // }
-const twoSumFast = (numbers, sum) => {
+const twoSumFastNumbers = (numbers, sum) => {
 
     const dataObject = {}
+    let result = []
 
-        for(let i =0; i< numbers.length; i++){
+    for(let i =0; i< numbers.length; i++){
+        dataObject[numbers[i]] = numbers[i] 
+    }
 
-            if(dataObject[sum - numbers[i]] !== undefined){ // 9 & 1
+    for(let i =0; i< numbers.length; i++){
+        const missingNumber = sum - numbers[i] 
 
-                return [dataObject[(sum - numbers[i])],i];
 
-            }
 
-            dataObject[numbers[i]] = i // 1: 1
+        if(dataObject[missingNumber] && dataObject[numbers[i]]){ 
+
+            result.push([i, dataObject[missingNumber]])
+
         }
+
+    }
+    return result
 }
+
+const twoSumFastIndex = (numbers, sum) => {
+
+    const dataObject = {}
+    let result = []
+
+    for(let i =0; i< numbers.length; i++){
+        const missingNumber = sum - numbers[i] 
+
+        if(dataObject[missingNumber] !== undefined){ 
+
+            result.push([dataObject[missingNumber], i])
+
+        }
+        dataObject[numbers[i]] = i
+
+    }
+    return result
+}
+
+console.log(twoSumFastIndex([1,2,7,8,9], 10))
+
 
 
 // find the indexes of two numbers that their sum is the second argument passed to the twoSum method
@@ -38,10 +68,10 @@ const twoSum = (numbers, sum) => {
     let result = []
 
     for(let i =0; i< numbers.length; i++){
-        // dataObject[numbers[i]] = numbers[i] // 1: 1 
-        dataObject[numbers[i]] = i // 1: 1
+        dataObject[numbers[i]] = numbers[i] // 1: 1 
+        // dataObject[numbers[i]] = i // 1: 1
     }
-    let count = 0
+
     for(let i =0; i< numbers.length; i++){
 
         const otherAdd = sum - numbers[i] // 10 - 1 = 9  | i = 0
@@ -50,24 +80,18 @@ const twoSum = (numbers, sum) => {
 
         if(dataObject[otherAdd] && dataObject[numbers[i]]){ // 9 & 1
             // 1
-            count++
-            pair[0] = dataObject[otherAdd] // 9
-            pair[1] = numbers[i] // 1
-
-            console.log(dataObject)
-            console.log(numbers)
-            console.log(pair)
+            pair[0] = i // 9
+            pair[1] = dataObject[otherAdd] // 1
             result.push(pair)
 
         
         }
-        delete dataObject[otherAdd] // 9
-        delete dataObject[numbers[i]] // 
+        delete dataObject[otherAdd] 
+        delete dataObject[numbers[i]] 
     }
 
-    console.log(result.length)
-    console.log(count)
-    return result.length
+
+    return result
 }
 
-twoSum([1,2,7,8,9], 10)
+// console.log(twoSum([1,2,7,8,9], 10))
