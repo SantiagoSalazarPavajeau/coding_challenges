@@ -11,6 +11,15 @@
 
 // }
 
+const dataObject = {}
+    for(let i =0; i< numbers.length; i++){
+        if(dataObject[sum - numbers[i]] !== undefined){ // 9 & 1
+            return [dataObject[(sum - numbers[i])],i];
+        }
+        dataObject[numbers[i]] = i // 1: 1
+    }
+
+
 // find the indexes of two numbers that their sum is the second argument passed to the twoSum method
 
 //      0 1 2 3
@@ -22,20 +31,22 @@ const twoSum = (numbers, sum) => {
     let result = []
 
     for(let i =0; i< numbers.length; i++){
-        dataObject[numbers[i]] = numbers[i] // 1: 1
+        // dataObject[numbers[i]] = numbers[i] // 1: 1 
+        dataObject[numbers[i]] = i // 1: 1
     }
-    console.log(dataObject)
-
+    let count = 0
     for(let i =0; i< numbers.length; i++){
 
         const otherAdd = sum - numbers[i] // 10 - 1 = 9  | i = 0
         //10 - 9 = 1
         let pair = []
 
-        if(dataObject[otherAdd] && dataObject[numbers[i]]){ // 9
+        if(dataObject[otherAdd] && dataObject[numbers[i]]){ // 9 & 1
             // 1
+            count++
             pair[0] = dataObject[otherAdd] // 9
-            pair[1] = numbers[i] //1
+            pair[1] = numbers[i] // 1
+
             console.log(dataObject)
             console.log(numbers)
             console.log(pair)
@@ -43,10 +54,12 @@ const twoSum = (numbers, sum) => {
 
         
         }
-        delete dataObject[otherAdd] 
+        delete dataObject[otherAdd] // 9
+        delete dataObject[numbers[i]] // 
     }
 
     console.log(result.length)
+    console.log(count)
     return result.length
 }
 
