@@ -10,14 +10,21 @@
 //     }
 
 // }
+const twoSumFast = (numbers, sum) => {
 
-const dataObject = {}
-    for(let i =0; i< numbers.length; i++){
-        if(dataObject[sum - numbers[i]] !== undefined){ // 9 & 1
-            return [dataObject[(sum - numbers[i])],i];
+    const dataObject = {}
+
+        for(let i =0; i< numbers.length; i++){
+
+            if(dataObject[sum - numbers[i]] !== undefined){ // 9 & 1
+
+                return [dataObject[(sum - numbers[i])],i];
+
+            }
+
+            dataObject[numbers[i]] = i // 1: 1
         }
-        dataObject[numbers[i]] = i // 1: 1
-    }
+}
 
 
 // find the indexes of two numbers that their sum is the second argument passed to the twoSum method
