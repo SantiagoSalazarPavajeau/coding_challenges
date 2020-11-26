@@ -34,6 +34,27 @@ const twoSumFastNumbers = (numbers, sum) => {
     return result
 }
 
+const twoSumDLFI = (numbers, sum) => {
+
+    const dataObject = {}
+    for(let i =0; i< numbers.length; i++){
+        dataObject[numbers[i]] = i
+    }
+
+    for(let i =0; i< numbers.length; i++){
+        const missingNumber = sum - numbers[i] 
+
+        if(dataObject[missingNumber] && dataObject[missingNumber] !== i){ 
+
+            return [dataObject[missingNumber], i]
+
+        }
+
+    }
+}
+console.log(twoSumDLFI([1,2,7,8,9], 10))
+
+
 const twoSumFastIndex = (numbers, sum) => {
 
     const dataObject = {}
@@ -53,7 +74,6 @@ const twoSumFastIndex = (numbers, sum) => {
     return result
 }
 
-console.log(twoSumFastIndex([1,2,7,8,9], 10))
 
 
 
