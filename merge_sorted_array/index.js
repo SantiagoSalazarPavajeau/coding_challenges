@@ -8,8 +8,8 @@
 // we use length1 and length2 as 'pointers'
 
 const mergeArrays = (array1, length1, array2, length2) => {
-    length1-- // to set as max index (2)
-    length2-- // instead of length (3)
+    length1-- // to set as max index (2)  i
+    length2-- // instead of length (3)  j
 
     for(let i = array1.length -1; i > 0; i--){
 
