@@ -2,7 +2,7 @@
 
 // some examples of binary tree searches are fibonacci, climbing stairs, max depth of tree etc.
 
-const recursionTreeMemoization = (maxLevel) => {
+const climbingStairsFast = (maxLevel) => {
     const treeData = {}
     return recursion(0, maxLevel, treeData)
 }
@@ -24,21 +24,33 @@ const recursion = (currentLevel, maxLevel, treeData) => {
     return treeData[currentLevel]
 }
 
-recursionTreeMemoization(3)
+// climbingStairsFast(3)
 
-const recursionTreeSlow = (maxLevel) => {
+
+// stairs : 3
+// 1 or 2 steps
+
+
+const climbStairsSlow = (maxLevel) => {
     return recursion_Tree_Slow(0, maxLevel)
 }
 
 const recursion_Tree_Slow = (currentLevel, maxLevel) => {
+
+    console.log('current stair:', currentLevel)
+    console.log('top stair', maxLevel)
+
     if(currentLevel > maxLevel){
-        return 0
+        console.log('we have gone over top stair')
+        return 0 // it does not count when we go over top level
     }
+
     if(currentLevel === maxLevel){
-        return 1
+        console.log('we have reached the top stair')
+        return 1 // only count + 1 when we reached top level
     }
-    console.log(recursion_Tree_Slow(currentLevel+1, maxLevel) + recursion_Tree_Slow(currentLevel+2, maxLevel))
+    // console.log('current amount of steps:', recursion_Tree_Slow(currentLevel+1, maxLevel) + recursion_Tree_Slow(currentLevel+2, maxLevel))
     return recursion_Tree_Slow(currentLevel+1, maxLevel) + recursion_Tree_Slow(currentLevel+2, maxLevel)
 }
 
-recursionTreeSlow(3)
+console.log(climbStairsSlow(3))

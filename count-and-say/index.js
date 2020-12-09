@@ -16,7 +16,7 @@ var countAndSay = function(n) {
     let result = '1'
     
     for(let i = 1; i < n ; i++){ // loop until we get to n
-        
+
         console.log(`current number ${i} still trying to get to ${n}:`)
 
         let sameDigits = ''
@@ -25,8 +25,10 @@ var countAndSay = function(n) {
         for(let j = 0; j < result.length; j++){ //
 
             sameDigits += result[j]
-
-                if(result[j] !== result[j+1]){ // if digits are different reset 
+                console.log('result[j+1]', result[j+1])
+                // if(j+1 >= result.length || result[j] !== result[j+1])
+                if( result[j] !== result[j+1]){ // if digits are different reset 
+                    // java result[j+1] error array our of index
 
                     console.log('sameDigits: ', sameDigits)
                     console.log('count:', sameDigits.length)
@@ -44,4 +46,4 @@ var countAndSay = function(n) {
     return result
 };
 
-console.log(countAndSay(5))
+console.log(countAndSay(7))
