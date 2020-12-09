@@ -1,3 +1,30 @@
+// check  tree is symmetrical or a mirror image 
+// so opposite nodes have to be equal
+//    1
+//   / \
+//  2   2     /// symmetric -> true
+// / \ / \
+// 3  4 4  3
+
+//    1
+//   /  \
+//  2    3     /// not symmetric -> false
+// / \   / \
+// 4  5  6  7
+
+//       1
+//    /      \
+//   2        2   /// symmetric -> true
+//  / \      /   \
+// 3  null   null   3    
+
+//         1
+//      /     \
+//     2       2   /// not-symmetric ->  false
+//    /  \    /   \
+//  null  3  null   3    
+
+
 const isSymmetric = (root) => {
     return checks(root, root) // send two tree duplicates
 };
