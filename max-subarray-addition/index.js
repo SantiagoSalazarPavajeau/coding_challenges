@@ -1,16 +1,16 @@
 // find the highest consecutive/continous sum of elements in the array
 // shoutout to  @thechanmoon
 
-var maxSubArray = function(nums) {
+const maxSubArray = (nums) => {
     let sum = nums[0];
-    for (let i = 1; i < nums.length; i++) {
+    for (let i = 1; i < nums.length; i++) { // starts at index one to compare and acculumate 
         console.log(nums)
+        console.log("i", i)
 
-        if (nums[i - 1] > 0) {
-
+        if (nums[i - 1] > 0) { // if the accumulation sum is positive
             console.log('last sum: ', nums[i-1])
 
-            nums[i] += nums[i - 1]; // modify current element by adding last
+            nums[i] += nums[i - 1]; // accumulate current element by adding current to last
 
             console.log('new sum', nums[i])
         }
@@ -27,7 +27,7 @@ var maxSubArray = function(nums) {
     return sum;
 };
 
-console.log(maxSubArray([-1,2,-3,4,2,7,-4,5]))
+console.log(maxSubArray([1,1,-4,1,2,1]))
 
 // var maxSubArray = function(nums) {
 //     let max = Math.max(...nums);
