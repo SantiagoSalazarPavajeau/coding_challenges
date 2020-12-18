@@ -5,36 +5,29 @@
 
 const levelOrderBottom =  ( root) => {
     if(root === null) return []
-    return savedataObject(root, 0).reverse()
+    let data = {}    
+    return savedataObject(root, 0, data).reverse()
 }
 
 
-const savedataObject = (root, level) => {
-    let dataObject = {}
+const savedataObject = (root, level, dataObject) => {
+    
     
     if(root === null){
         return []
     }
 
-    if(dataObject[level]){
-        if(root.left !== null && root.right !== null){
-            dataObject[level] = [...dataObject[level], root.left.val]
-            dataObject[level] = [...dataObject[level], root.right.val]
-            savedataObject(root.left, level+1)
-            savedataObject(root.right, level+1)
-
-        }else{
-            if(root.left !== null){
-                dataObject[level] = [...dataObject[level], root.left.val]
-                savedataObject(root.left, level+1)
-            } else if (root.right !== null){
-                dataObject[level] = [...dataObject[level], root.right.val]
-                savedataObject(root.right, level+1)
-            }
-        }
-    } else {
-        dataObject[level] = []
+    if(dataObject[level] === undefined){
+        dataObject[level] = [root.val]
+    }else{
+        dataObject[level].push(root.val)
     }
+    
+    if(root !== null){
+        savedataObject(root.left, level+1,dataObject)
+        savedataObject(root.right, level+1,dataObject)
+
+    } 
    
     return Object.values(dataObject)
-    }
+}
