@@ -31,39 +31,4 @@ const swapTwoToSort = (unsortedArray)=>{
     return swaps;
 }
 
-// swapTwoToSort([1,3,5,2,4,6,7])
-
-const fastMinSwapTwoSort = (unsorted) => {
-    let count = 0 // +1 whenever we sort
-    let sorted = [...unsorted]
-    sorted.sort()
-    let dataObject = {}
-
-    for(let i = 0; i < unsorted.length; i++){
-        dataObject[unsorted[i]] = i
-    }
-    
-    for(let i = 0; i < unsorted.length; i++){
-        if(unsorted[i] !== sorted[i]){
-            count++
-
-            let init = unsorted[i]
-
-            temp = unsorted[i]
-
-            unsorted[i] = unsorted[dataObject[i]]
-
-            unsorted[dataObject[i]] = temp
-
-            dataObject[init] = dataObject[sorted[i]]
-
-            dataObject[sorted[i]] = i
-            
-            console.log(unsorted[i], sorted[i], i, unsorted, sorted)
-        }
-
-    }
-    console.log(count)
-    return count
-}
-fastMinSwapTwoSort([4, 3, 1, 2])
+swapTwoToSort([1,3,5,2,4,6,7])
