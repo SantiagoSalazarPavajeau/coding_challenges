@@ -14,6 +14,7 @@ class MinBinaryHeap{
     }
 
     insertElement(newElement){
+        // let newElement = new Node(element, element.priority)
         this.heapArray.push(newElement)
 
         let newElementId = this.heapArray.length - 1 
@@ -23,7 +24,7 @@ class MinBinaryHeap{
             let newElementParent = this.heapArray[newElementParentId]
 
             if(newElementParent > newElement){
-                this.swap(newElementParentId, newElementId) // swap elements (found by id on this.heapArray)
+                this.swapHelper(newElementParentId, newElementId) // swap elements (found by id on this.heapArray)
                 newElementId = newElementParentId // swap ids in this while loop scope
                 // console.log(this.heapArray)
             }else{
@@ -32,15 +33,7 @@ class MinBinaryHeap{
         }
     }
 
-
-
-    getTopElementAndReorder(){ // pull out first priority item and set new next priority item
-        // first element is shot out 
-        // and last element becomes first element
-        // last element is not the smallest so we have to find the smallest to go on top of the heap
-        // visit leaves and compare value
-        //    - make sure leaves exist
-        //    - swap parent if leaf is smaller, but swap for smallest of two leaves
+    getTopElementAndReorder(){
         let topElement = this.heapArray[0]
 
         if(this.heapArray.length < 1) return null
@@ -48,6 +41,12 @@ class MinBinaryHeap{
         this.heapArray[0] = this.heapArray[this.heapArray.length - 1]
         this.heapArray.pop()
 
+        this.reorderHelper()
+
+        return topElement
+    }
+
+    reorderHelper(){
         let parentId = 0
         let leftLeafId = (parentId * 2) + 1
         let rightLeafId =  (parentId * 2) +2
@@ -59,15 +58,15 @@ class MinBinaryHeap{
 
 
             let minLeaf = Math.min(leftLeaf, rightLeaf)
-            if( minLeaf < parent){ // if either one of the two leaves is less than parent swap
+            if( minLeaf < parent){ // if either one of the two leaves is less than parent swapHelper
 
                 if(minLeaf === leftLeaf){
-                    this.swap(parentId, leftLeafId) // swap values
+                    this.swapHelper(parentId, leftLeafId) // swapHelper values
                     parentId = leftLeafId // swap ids to move on down the heap
                 }
 
                 if(minLeaf === rightLeaf) {
-                    this.swap(parentId,rightLeafId)
+                    this.swapHelper(parentId,rightLeafId)
                     parentId = rightLeafId
                 }
             } else break
@@ -79,13 +78,20 @@ class MinBinaryHeap{
             rightLeaf = this.heapArray[rightLeafId]
             parent = this.heapArray[parentId]
         }
-        return topElement
     }
 
-    swap(parentId, leafId){
+    swapHelper(parentId, leafId){
         [this.heapArray[parentId], this.heapArray[leafId]] = [this.heapArray[leafId], this.heapArray[parentId]]
     }
 }
+
+
+// class Node {
+//     constructor(val, priority){
+//         this.val = val;
+//         this.priority = priority;
+//     }
+// }
 
 
 const priorities = [1,2,3,4,5]
