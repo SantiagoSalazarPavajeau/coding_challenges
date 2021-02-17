@@ -16,7 +16,7 @@
      for(let listNumber = 1; listNumber <= size; listNumber++){
         let found = false // to skip index that already was set  to string
          for( let key in conditionData){
-             console.log(key)
+            //  console.log(key)
              if ((listNumber % key) === 0){ // check for condition (divisible by) to add fizz or buzz to the result list
                 found = true
                  result.push(conditionData[key])
@@ -27,7 +27,7 @@
             result.push(listNumber) // add number when digit was not divisible with 0 remainder
          }
      }
-     console.log(result)
+    //  console.log(result)
      return result
  }
 
