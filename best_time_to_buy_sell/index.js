@@ -4,26 +4,45 @@
 // and selling at higher
 
 
-var maxProfit = function(prices) {
-    
-    if (prices.length === 0){
-        return 0
-    }
-    let current = 0
-    let max = 0
-    for(let i = 0; i<prices.length; i++){
+let maxProfit = (prices) => {
         
-        for(let j = i+1; j<prices.length; j++){
-        // O(n^2) nested loop
-        // inner loop on i+1 to always compare to next elements
-            if(prices[j] - prices[i] > 0){
-                current = prices[j] - prices[i]
-                console.log("current",current)
-                console.log("max", max)
-            }
-        max = Math.max(current, max) 
-        // compare profits save higher
+    let min = prices[0]
+    let max = 0
+    
+    for(let i = 0; i < prices.length; i++){
+        if(prices[i] < min){
+            min = prices[i]
+        }
+        
+        if(prices[i]- min > max){
+            max = prices[i] - min
         }
     }
+    
     return max
-};
+}
+
+
+// var maxProfit = function(prices) {
+    
+//     if (prices.length === 0){
+//         return 0
+//     }
+//     let current = 0
+//     let max = 0
+//     for(let i = 0; i<prices.length; i++){
+        
+//         for(let j = i+1; j<prices.length; j++){
+//         // O(n^2) nested loop
+//         // inner loop on i+1 to always compare to next elements
+//             if(prices[j] - prices[i] > 0){
+//                 current = prices[j] - prices[i]
+//                 // console.log("current",current)
+//                 // console.log("max", max)
+//             }
+//         max = Math.max(current, max) 
+//         // compare profits save higher
+//         }
+//     }
+//     return max
+// };
