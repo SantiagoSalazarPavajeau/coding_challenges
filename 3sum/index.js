@@ -40,3 +40,42 @@ const threeSum = (nums) => {
     return result
     
 };
+
+
+
+const threeSumClosest = (nums, target) => {
+    //     [-1,2,1,-4]
+    //      1
+    nums.sort((a,b) => a-b)
+    
+    let min = Number.MAX_SAFE_INTEGER
+
+    for( let i = 0; i < nums.length && min != 0;  i++){
+        
+        let start = i + 1, end = nums.length - 1
+        
+        while(start < end){
+            
+            let actualSum = nums[start] + nums[end] + nums[i] // only use three pointer sum
+                            
+            // check the min difference 
+            // difference between actualsum and target
+            if(Math.abs(target - actualSum) < Math.abs(min)) min = target - actualSum
+            // separate absolute value difference from actual minimum difference
+            
+            // min = Math.min(Math.abs(target - actualSum), Math.abs(min))
+            
+            // console.log(min)
+ 
+            if(actualSum < target){ // traverse like this since its sorted
+                // if we need a larger sum
+                start++
+            }else{
+                // if we need a smaller sum
+                end--
+            }
+        }
+        
+    }
+    return target - min // is the closest 3 sum
+};
