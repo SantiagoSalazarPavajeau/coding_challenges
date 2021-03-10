@@ -1,4 +1,25 @@
 //thequickbrownfoxxofnworbquickthe  ->  brownfoxxofnworb, The length is: 16
+const maxPalindromeSubStringRecursion = (string) => {
+    let max = '';
+    for(let i = 0; i<string.length; i++){
+        let sOdd = pal(string, i, i), sEven = pal(string, i, i+1)
+        if (sOdd.length > max.length) max = sOdd
+        if (sEven.length > max.length) max = sEven
+    }
+    return max
+}
+
+const pal = (string, l, r) => {
+    while(l >= 0 && r < string.length){
+        if(string[l] !== string[r]) break
+        l--
+        r++
+    }
+    return string.substring(l+1, r)
+}
+
+console.log(maxPalindromeSubStringRecursion('thequickbrownfoxxofnworbquickthe'))
+
 
 
 const maxPalindromeSubString = (string) => {
@@ -61,7 +82,7 @@ const maxPalindromeSubString = (string) => {
 
 }
 
-maxPalindromeSubString("noonmadam")
+// maxPalindromeSubString("noonmadam")
 
 // *Program to print unique elements of an string present on odd position, along with the count of those elements in the entire string
 // i.e abbloseckk - a:1,b:2,o:1,e:1,k:2
