@@ -1,3 +1,34 @@
+
+const fastLengthOfLongestSubstring = (s) => {
+    if(s.length === 0)return 0
+    let map = {}
+    let left = 0
+    let max= 0
+    
+    for(let right = 0; right < s.length; right++){
+        // check if char has been added to map
+        // add to map
+        // or change pointers
+
+        // carefully compare max for real position and real length
+        
+        let currChar = s[right]
+        
+        if(map[currChar]){
+            left = Math.max( left , map[currChar] + 1)
+        } 
+        // compare pointers to max
+        
+        max = Math.max(max, right-left + 1)
+        
+        map[currChar] = right
+    }
+    return max
+}
+
+
+
+
 const lengthOfLongestSubstring = (s) => {
     
     let sChars = s.split('')
