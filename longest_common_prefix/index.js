@@ -1,5 +1,5 @@
 
-const longestCommonPrefix = (strs) => {
+const longestCommonPrefix = (strs) => { // O(nlogn) bc of sort
     
     if(strs.length === 0) return ''
     strs.sort() // sort alphabetically 
