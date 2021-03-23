@@ -4,49 +4,49 @@ const searchRange = (nums, target) => {
     let l = 0
     let r = nums.length -1
     
-    let first = -1;
+    let m;
+    
+    let first = -1
+    let last = -1
+
     
     while(l<r){
         
-        let m = Math.floor(l + (r -l)/2)
+        m = Math.floor((l + r)/2)
         
-        if(nums[m] >= target){
-            r = m - 1
+        if(nums[m] < target){
+            l = m +1
         }else{
-            l = m + 1
+            r = m
         }
-        
-        if(target === nums[m]){
-            first = m
-
-        }
-        
-
 
     }
     
-    console.log(first)
-
+    if(target === nums[l]){
+        first = l
+    }else{
+        first = -1
+    }
     
-
-
-    l = 0
+    // console.log(first)
     r = nums.length -1
-    let last = -1
+        console.log(m)
 
     while(l<r){
         
-        let m = Math.floor(l + (r -l)/2)
+        m = Math.floor((l + r)/2) +1
         
-        if(target >= nums[m]){
-            l =m + 1
+        if(nums[m] > target){
+            r =m - 1
         }else{
-            r = m -1
+            l = m
         }
-        
-        if(target === nums[m]){
-            last = m
-        }
+    }
+
+    if(target === nums[r]){
+        last = r
+    }else{
+        last = -1
     }
         
     return [first, last]
