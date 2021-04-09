@@ -6,19 +6,19 @@
 const trapRainWater = (height) => {
     let str = 0, 
     end = height.length - 1, 
-    max = 0, 
-    lMax = 0, 
-    rMax = 0;
+    water = 0, 
+    sMax = 0, // start max
+    eMax = 0; // end max
 
     while(str<=end){
-        lMax = Math.max(lMax, height[str])
-        rMax = Math.max(rMax, height[end])
+        sMax = Math.max(sMax, height[str])
+        eMax = Math.max(eMax, height[end])
 
-        if(lMax < rMax){ // move start pointer
-            max+= lMax - height[str++]
+        if(sMax < eMax){ // move start pointer
+            water+= sMax - height[str++]
             // highest left yet minus current 
         }else{ // move end pointer
-            max+= rMax - height[end--]
+            water+= eMax - height[end--]
             // highest right yet minus current
         }
     }
