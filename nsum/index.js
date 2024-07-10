@@ -1,6 +1,6 @@
 let length = 0
 
-var fourSum = function(nums, target) {
+const fourSum = (nums, target) => {
     length = nums.length
     nums.sort()
     return kSum(nums, target, 4, 0)
@@ -18,9 +18,9 @@ const kSum = (nums, target, k, index) => {
             
             if(target - nums[i] === nums[j]){
                 let temp = []
-                temp.unshift(nums[i])
-                temp.unshift(target - nums[i])
-                result.unshift(temp)
+                temp.push(nums[i])
+                temp.push(target - nums[i])
+                result.push(temp)
                 
                 while(i<j && nums[i]==nums[i+1]) i++;
                 while(i<j && nums[j-1]==nums[j]) j--;
@@ -37,9 +37,9 @@ const kSum = (nums, target, k, index) => {
             let temp = kSum(nums, target - nums[i], k-1, i+1)
             if(temp != null){
                 for(let t of temp){
-                    t.unshift(nums[i])
+                    t.push(nums[i])
                 }
-                result = [...result, temp]
+                result.push(...temp)
             }
             while(i<length-1 && nums[i] === nums[i+1]){
                 i++

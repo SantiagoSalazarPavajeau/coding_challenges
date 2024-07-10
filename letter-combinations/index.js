@@ -20,9 +20,13 @@ const letterCombinations = (digits) => {
         // let num = parseInt(digits[i])
         
         while(result.peek().val.length === i){
+
             let last = result.remove().val
+
             for(let char of mapping[digits[i]]){
+
                 result.push(last+char)
+                
             }
             // console.log(result.peek().val)
 

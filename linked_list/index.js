@@ -11,6 +11,29 @@ class LinkedList{
         this.tail = null
     }
 
+    peek(){
+        if(!this.head) return null
+        return this.head
+    }
+
+    remove(){
+        if(!this.head) return null
+        length--
+        let head = this.head
+        this.head = head.next
+        return head
+    }
+
+    toArray(){
+        let node = this.head
+        let result = []
+        while(head){
+            result.push(node.val)
+            node = node.next
+        }
+        return result
+    }
+
     push(val){
         let newNode = new ListNode(val)
         if(!this.head){

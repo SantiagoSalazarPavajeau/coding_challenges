@@ -42,7 +42,7 @@ const mB = (strings) => {
                     break
                 }
 
-            } else { 
+            } else {
                 stack.push(bracket) // if its is an opening bracket
             }
 

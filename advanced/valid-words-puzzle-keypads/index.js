@@ -8,6 +8,7 @@ var findNumOfValidWords = function(words, puzzles) {
             // add a 1 bit to position word.charCodeAt(i) from each character
             // 
         }
+        // console.log(mask)
         hm[mask] = hm[mask] ? hm[mask]+1 : 1
     }
     
@@ -23,7 +24,11 @@ var findNumOfValidWords = function(words, puzzles) {
         let firstChar = 1 << (puzzle.charCodeAt(0) - 'a'.charCodeAt(0))
         
         while(true){
+
             if((substring & firstChar) === firstChar && hm[substring]){
+                console.log(substring)
+                console.log(firstChar)
+                console.log(substring & firstChar)
                 count += hm[substring]
             }
             
@@ -36,3 +41,5 @@ var findNumOfValidWords = function(words, puzzles) {
     }
     return result
 }
+
+console.log(findNumOfValidWords(["aaaa","asas","able","ability","actt","actor","access"],["aboveyz","abrodyz","abslute","absoryz","actresz","gaswxyz"]))

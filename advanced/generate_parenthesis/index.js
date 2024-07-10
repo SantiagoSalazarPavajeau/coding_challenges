@@ -4,9 +4,9 @@ function backTrack(result,string,open,close,max){
         return
     }
     // console.log(string)
-    if(open < max) backTrack(result, string+'(', open +1, close, max)
+    if(open < max) backTrack(result, string+'(', open +1, close, max) // opening cant be before max
     
-    if(close < open) backTrack(result, string+')', open, close+1, max)
+    if(close < open) backTrack(result, string+')', open, close+1, max) // closing cant be before opening
 }
 
 var generateParenthesis = function(n) {
