@@ -15,10 +15,12 @@ class Solution:
         for i in range(len(nums)):
             result[i] = prefix
             prefix = prefix * nums[i]
+            pdb.set_trace()
         postfix = 1
         for i in range(len(nums) -1, -1, -1):
             result[i] = result[i] * postfix
             postfix = postfix * nums[i]
+            pdb.set_trace()
 
         logging.info("Result is : {}".format(result))
         return result
