@@ -8,7 +8,7 @@ graph = {
   3: [2, 4],
   4: [3, 2]
 }
-
+# from adjacency list
 def connected_components_count(graph):
     visited = set()
     count = 0
@@ -29,3 +29,6 @@ def explore(graph, current, visited):
     return True
 
 print(connected_components_count(graph))
+
+
+
