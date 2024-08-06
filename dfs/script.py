@@ -1,4 +1,11 @@
-
+graph = {
+    "a": ["b", "c"],
+    "b": ["d"],
+    "c": ["e"],
+    "d": ["f"],
+    "e": [],
+    "f": []
+}
 
 def dfsPrintIterative(graph, source):
     stack = []
