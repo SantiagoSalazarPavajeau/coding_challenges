@@ -28,7 +28,7 @@ def minimum_window_substring(A, B):
 
         while(count == 0):
             if(right-left < length):
-                length = right - left
+                length = min(length, right - left)
                 min_window = A[left:right]
             
             l_letter = A[left]
