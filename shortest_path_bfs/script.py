@@ -32,3 +32,20 @@ def build_graph(edges):
     return graph
 
 print(shortest_path_bfs(edges,nodeA,nodeB))
+
+
+
+matrix = [["a","b","c"],["#","d","#"],["e","f","g"]]
+def shortest_path_bfs_matrix(matrix):
+    rows = len(matrix)
+    columns =  len(matrix[0])
+    move_count = 0
+    nodes_in_layer = 1
+    nodes_next_layer = 0
+    end= False
+    visited = [[] for item in rows]
+    dir_row = [-1,1, 0, 0]
+    dir_column =  [0,0,1,-1]
+    row_queue = deque()
+    column_queue = deque()
+    
