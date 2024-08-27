@@ -23,15 +23,16 @@ class Solution:
 
             # iteration over left pointer side
             # if left value is less than or equal than middle
+            # then the left side is sorted
             if nums[left] <= nums[middle]:
                 # if target is greater than middle or less than left
-                # if target is outside range of middle and left
+                # target is not between middle and left
                 if target > nums[middle] or target < nums[left]:
                     # we move left pointer to right of middle
                     left = middle + 1
                 else:
                     # we move left pointer to left of middle
-                    left = middle - 1
+                    right = middle - 1
             
             # iteration over right pointer side
             # middle value is lower than left
