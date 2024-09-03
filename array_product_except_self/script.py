@@ -9,17 +9,23 @@ class Solution:
     """
     def array_product_except_self(self, nums: List[int]) -> bool:
         logging.basicConfig(level=logging.INFO)
+
         result = [1] * (len(nums))
         # pdb.set_trace()
-        prefix = 1 
+        left_to_right = 1 
+        # calculates the product excluding the first element
         for i in range(len(nums)):
-            result[i] = prefix
-            prefix = prefix * nums[i]
+            #dynamic programming
+            result[i] = left_to_right
+            left_to_right = left_to_right * nums[i]
             pdb.set_trace()
-        postfix = 1
+
+        right_to_left = 1
+        #calculated the product excluding the last element
         for i in range(len(nums) -1, -1, -1):
-            result[i] = result[i] * postfix
-            postfix = postfix * nums[i]
+            # dynamic programming
+            result[i] = result[i] * right_to_left
+            right_to_left = right_to_left * nums[i]
             pdb.set_trace()
 
         logging.info("Result is : {}".format(result))
