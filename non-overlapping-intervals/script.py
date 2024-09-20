@@ -5,12 +5,12 @@ def non_overlapping_intervals(intervals):
 
     for interval in intervals:
         # if the first number of the next interval 
-        # is larger than the second number of the previous interval
-        # there is no overlap
-        if interval[0] >= end:
-            end = interval[1]
-        else:
+        # is less than the second number of the previous interval
+        # there is overlap
+        if interval[0] < end:
             count += 1
+        else:
+            end = interval[1]
     
     return count
 
