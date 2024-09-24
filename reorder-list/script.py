@@ -8,6 +8,7 @@ def find_middle(head):
 def reverse_list(head):
     prev, curr = None, head
     while curr:
+        #reverse the second half
         next_temp = curr.next
         curr.next = prev
         prev = curr
@@ -17,6 +18,7 @@ def reverse_list(head):
 
 def merge_lists(l1, l2):
     while l2:
+        # merge by alternating values
         l1_next, l2_next = l1.next, l2.next
         l1.next = l2
         l2.next = l1_next
@@ -35,6 +37,6 @@ def reorder_list(head):
     second_half = reverse_list(mid.next)
     mid.next = None  # Split the list into two halves
     
-    # Step 3: Merge the two halves
+    # Step 3: Merge the two halves alternating
     merge_lists(head, second_half)
 
