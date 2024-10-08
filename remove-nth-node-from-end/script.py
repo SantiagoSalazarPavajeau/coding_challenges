@@ -6,31 +6,32 @@ class ListNode:
 
 def remove_nth_node_from_end(head, n):
     linked_list = ListNode(0, head)
-    linked_list.next = head
-
-    start = linked_list
-    end = head
-
-    while end and n>0:
+    # two pointer technique
+    start = end = linked_list
+    
+    # move the end pointer to n
+    for i in range(n):
         # print(end.val)
         # print(n)
         end = end.next 
-        n-=1
-    
-    while end:
+
+    # move the start and end pointer until end reaches last node
+    # start is now one spot before n
+    while end.next:
         # print(start.val)
         # print(end.val)
         start = start.next # 
         end = end.next # Nonde
 
     # print(end)
-
+    # skip n
     start.next = start.next.next
     
-    while linked_list.next:
-        print(linked_list.next.val)
-        linked_list = linked_list.next
-    # return linked_list.next
+    # while linked_list.next:
+    #     print(linked_list.next.val)
+    #     linked_list = linked_list.next
+    return linked_list.next
+
 five = ListNode(5)
 four = ListNode(4, five)
 three = ListNode(3, four)
