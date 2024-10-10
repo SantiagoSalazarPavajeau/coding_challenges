@@ -1,32 +1,30 @@
+from collections import defaultdict
 import pdb
 
 def course_schedule(number_of_courses, prerequisites):
-    adjecency_list = {}
+    adjecency_list = defaultdict(list)
     visited = set()
     for a,b in prerequisites:
-        if a not in adjecency_list.keys():
-            adjecency_list[a]= [b]
-        else:
-            adjecency_list[a].append(b)
+        adjecency_list[a].append(b)
     
     def dfs(current):
+        # if there current has already been visited
+        # there is a cycle
         if current in visited: return False
 
-        if current in adjecency_list.keys() and adjecency_list[current] is []: 
-            return True
+        if adjecency_list[current] is []: return True
 
         visited.add(current)
 
-        if current in adjecency_list.keys():
-            for neighbor in adjecency_list[current]:
-                if not dfs(neighbor): 
-                    return False
+        for neighbor in adjecency_list[current]:
+            if not dfs(neighbor): 
+                return False
 
         visited.remove(current)
 
         # pdb.set_trace()
 
-        if current in adjecency_list.keys(): adjecency_list[current] = []
+        adjecency_list[current] = []
 
         return True
 
