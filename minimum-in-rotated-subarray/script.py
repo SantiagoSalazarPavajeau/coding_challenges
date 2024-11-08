@@ -11,13 +11,13 @@ class Solution:
         logging.basicConfig(level=logging.INFO)
         result = nums[0]
         left = 0
-        right = len(nums) -1
+        right = len(nums) - 1
         while left < right:
             # no remainder divide in half
-            mid = (left + right ) // 2
+            mid = (left + right) // 2
 
             if nums[mid] > nums[right]:
-                #smallest value is in right 
+                #smallest value is in right
                 left = mid+1
             else:
                 right = mid
